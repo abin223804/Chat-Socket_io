@@ -1,10 +1,12 @@
-import express from 'express';
+
+
+const express = require('express');
 
 const app=express();
 
-import Server from 'socket.io'
+const {Server} = require('socket.io')
 
-import http from 'http'
+const http = require('http')
 
 const server =http.createServer(app);
 
@@ -12,8 +14,12 @@ const io= new Server (server)
 
 const port=5000;
 
-app.get('/',(req,res)=>{
-    res.sendFile(__dirname + '/index.html')
+
+
+
+app.get('/',(req,res) => {
+    res.sendFile(__dirname +'/index.html') 
+   
 })
 
 io.on('connection',(socket)=>{
@@ -30,3 +36,4 @@ io.on('connection',(socket)=>{
 server.listen(port,()=>{
     console.log(`server listening on ${port}`);
 })
+
